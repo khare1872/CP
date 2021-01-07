@@ -1,0 +1,49 @@
+You have given an array a of length n and an integer x to a brand new robot. What the robot does is the following: it iterates over the elements of the array, let the current element be q. If q is divisible by x, the robot adds x copies of the integer qx to the end of the array, and moves on to the next element. Note that the newly added elements could be processed by the robot later. Otherwise, if q is not divisible by x, the robot shuts down.
+
+Please determine the sum of all values of the array at the end of the process.
+
+Input
+The first input line contains a single integer t (1≤t≤100) — the number of test cases.
+
+The first line of each test case contains two integers n and x (1≤n≤105, 2≤x≤109) — the length of the array and the value which is used by the robot.
+
+The next line contains integers a1, a2, ..., an (1≤ai≤109) — the initial values in the array.
+
+It is guaranteed that the sum of values n over all test cases does not exceed 105.
+
+Output
+For each test case output one integer — the sum of all elements at the end of the process.
+
+Solution
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        long long x;
+        cin>>n>>x;
+        vector<long long int> v(n);
+        vector<long long int> c(n);
+        long long int sum=0;
+        for(int i=0;i<n;i++){
+            cin>>v[i];
+            sum+=v[i];
+          c[i]=v[i];
+        }
+        int i=0;
+        while(1){
+            if(c[i%n]%x==0){
+                sum+=v[i%n];
+                c[i%n]=c[i%n]/x;
+                i++;
+            } 
+            else break;
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}
