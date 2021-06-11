@@ -1,30 +1,55 @@
 #include <bits/stdc++.h>
- 
 using namespace std;
- 
-int main()
+long long int solve(int n)
 {
-   int t;
-   cin>>t;
-   while(t--){
-       long long int a,b;
-       cin>>a>>b;
-       long long int ans = b-a;
-       
-       while(a>0){
-           ans-= (a/10)*1;
-           a=a/10;
-           
-       }
-       int g=1;
-       while(b>0){
-           ans+=(b/10)*1;
-           g++;
-           b=b/10;
-           
-       }
-       cout<<ans<<endl;
-   }
+    long long int ans=0;
+    while (n % 2 == 0)
+    {
+        ans++;
+        n = n/2;
+    }
+    for (int i = 3; i <= sqrt(n); i = i + 2)
+    {
+        while (n % i == 0)
+        {
+            ans++;
+            n = n/i;
+        }
+    }
  
+    if (n > 2){
+        ans++;
+    }
+    return ans;
+}
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        long long int a,b,k;
+         cin>>a>>b>>k;
+        if(k==1){
+             if(a==b){
+                cout<<"NO"<<endl;
+                continue;
+            }
+            else if(a%b==0 || b%a==0){
+                cout<<"YES"<<endl;
+                continue;
+            }
+            else{
+                cout<<"NO"<<endl;
+                continue;
+            }
+         }
+         else {
+             int ans= solve(a);
+             ans+=solve(b);
+             if(ans>=k) cout<<"Yes"<<endl;
+             else cout<<"No"<<endl;
+         }
+        
+ 
+    }
     return 0;
 }
