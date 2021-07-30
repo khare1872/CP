@@ -42,7 +42,7 @@ int main() {
         //cout<<v[i]<<" ";
     }
     long long int ans =0;
-   unordered_map<int, int> hm;
+   unordered_map< int, int> hm;
     //int dist_count = 0;
     hm[v[0]]=1;
     for (int i = 1; i <= k; i++) {
