@@ -8,7 +8,7 @@ public:
             auto restSum = sum - abs(nums1[i] - nums2[i]);
             auto it = st.lower_bound(nums2[i]);
             if(it != st.end()) minSum = min(minSum, restSum + abs(*it - nums2[i]));
-            if(it != st.begin()) minSum = min(minSum, restSum + abs(*prev(it) - nums2[i]));
+            if(it != st.begin()) minSum = min(minSum, restSum + abs(*prev(it)- nums2[i]));
         }
         return minSum % 1000000007;
     }
